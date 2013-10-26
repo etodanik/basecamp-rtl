@@ -1,0 +1,24 @@
+{
+  "name": "Basecamp RTL",
+  "version": "0.1",
+  "manifest_version": 2,
+  "description": "An extension that enables RTL in Basecamp",
+  "permissions": [
+    "contextMenus"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.basecamp.com/*"],
+      "js": ["vendor/jquery-2.0.3.min.js", "src/contentscript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    "vendor/jquery-2.0.3.min.map"
+  ],
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "background": "src/background.html"
+}
