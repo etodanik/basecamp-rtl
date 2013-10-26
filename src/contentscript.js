@@ -12,7 +12,7 @@ function setDirectionRtl(item){
 function detectDirection(){
 	// we set up a couple of regular expressions to filter everything BUT
 	// either English or Bidi (Arabic, Hebrew)...
-	var nonBidi 	= 	/[^\u05D0-\u05FF]+/g,
+	var nonBidi 	= 	/[^\u05D0-\u05FF\u0600-\u06FF]+/g,
 		nonEnglish	=	/[^a-z]+/ig;
 
 	// a list of elements we want to affect
