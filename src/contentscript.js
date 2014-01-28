@@ -5,7 +5,14 @@ function setDirectionRtl(item){
 			'text-align': 'right'
 		});
 
-	if($(item).prop('tagName') === 'A'){
+	$('input[type=checkbox]').css('float', 'left');
+
+	if(	$(item).prop('tagName') === 'A' ||
+		(
+			$(item).prop('tagName') === 'SPAN' &&
+			$(item).hasClass('wrapper')
+		)
+	){
 		// Help links be RTL-able. Links will not be styled as RTL separately from
 		// the rest of the content, unless they are a block of their own. Therefore
 		// we set them to be inline-block
@@ -15,6 +22,12 @@ function setDirectionRtl(item){
 				'*display': 'inline',
 				'zoom'	: '1'
 			});
+
+		// If we're on the TODO's list rather than the single TODO display
+		if($('ul.todos').length > 0){
+			$('.content', $(item)).css('float', 'left');
+			$('form', $(item)).css('float', 'right');
+		}
 	}
 }
 
@@ -33,6 +46,7 @@ function detectDirection(){
 		'.content',
 		'.formatted_content',
 		'.in_project a',
+		'article.todolist .todo.show .wrapper',
 		$('.wysihtml5-sandbox').contents().find('body')	//	this one is form wysihtml5 iFrame contents
 	];
 
