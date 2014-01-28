@@ -2,11 +2,20 @@ function setDirectionRtl(item){
 	$(item)
 		.css({
 			'direction': 'rtl',
-			'text-align': 'right',
-			// I'm not sure about the inline-block, but it seems to help with links without
-			// ruining the intended content too much
-			'display': 'inline-block'
+			'text-align': 'right'
 		});
+
+	if($(item).prop('tagName') === 'A'){
+		// Help links be RTL-able. Links will not be styled as RTL separately from
+		// the rest of the content, unless they are a block of their own. Therefore
+		// we set them to be inline-block
+		$(item)
+			.css({
+				'display': 'inline-block',
+				'*display': 'inline',
+				'zoom'	: '1'
+			});
+	}
 }
 
 function detectDirection(){
@@ -20,7 +29,7 @@ function detectDirection(){
 		'.document_page',
 		'.document_body',
 		'#document_title',
-		'.topic .what a',
+		'.topic .what',
 		'.content',
 		'.formatted_content',
 		'.in_project a',
