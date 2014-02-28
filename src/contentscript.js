@@ -5,7 +5,9 @@ function setDirectionRtl(item){
 			'text-align': 'right'
 		});
 
-	$('input[type=checkbox]').css('float', 'left');
+	$('input[type=checkbox]')
+		.css('float', 'left')
+		.css('position', 'relative');
 
 	if(	$(item).prop('tagName') === 'A' ||
 		(
